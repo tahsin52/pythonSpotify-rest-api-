@@ -24,7 +24,7 @@ class lastFmSpotify():
         url = f"http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&format=json"
         response = requests.get(url, params=params)
         if response.status_code != 200:
-            self.exceptionalExceptions(response.status_code, response.text())
+            self.exceptionalExceptions(response.status_code, response.text)
         res = response.json()
         print("Top Songs are: ")
         for item in res['tracks']['track']:
@@ -66,7 +66,7 @@ class lastFmSpotify():
             res = response.json()
             self.playlist_id = res['id']
         else:
-            self.exceptionalExceptions(response.status_code, response.text())
+            self.exceptionalExceptions(response.status_code, response.text)
 
     def add_songs_to_playlist(self):
         uri_list = json.dumps(self.uris)
